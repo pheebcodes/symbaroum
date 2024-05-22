@@ -36,5 +36,13 @@
     "style-loader": "^0.18.1",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
+  },
+  "engines": {
+    "node": "8.17.0",
+    "npm": "5.10.0"
+  },
+  "volta": {
+    "node": "8.17.0",
+    "npm": "5.10.0"
   }
 }
