@@ -1,48 +1,35 @@
 {
   "name": "symbaroum",
+  "type": "module",
   "version": "0.1.10",
   "private": true,
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server",
-    "lint": "eslint src/"
-  },
-  "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "classnames": "^2.2.5",
-    "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.4",
-    "eslint": "^3.19.0",
-    "eslint-plugin-react": "^7.0.1",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "font-awesome": "^4.7.0",
-    "immutable": "^3.8.1",
-    "node-sass": "^4.5.3",
-    "normalize.css": "^7.0.0",
-    "postcss-loader": "^2.0.5",
-    "preact": "^8.2.7",
-    "preact-compat": "^3.17.0",
-    "react-redux": "^5.0.5",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0",
-    "sass-loader": "^6.0.5",
-    "style-loader": "^0.18.1",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "build": "vite build",
+    "dev": "vite"
   },
   "engines": {
-    "node": "8.17.0",
-    "npm": "6.13.4"
+    "node": "20.13.1",
+    "npm": "10.8.0"
   },
   "volta": {
-    "node": "8.17.0",
-    "npm": "6.13.4"
+    "node": "20.13.1",
+    "npm": "10.8.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "classnames": "^2.5.1",
+    "font-awesome": "^4.7.0",
+    "immutable": "^4.3.6",
+    "normalize.css": "^8.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^5.1.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "sass": "^1.77.2",
+    "vite": "^5.2.11",
+    "vite-plugin-static-copy": "^1.0.5"
   }
 }

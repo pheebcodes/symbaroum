@@ -1,9 +1,8 @@
-import Preact from "preact";
 import classNames from "classnames";
 
 function Labeled(name, Component) {
   return (props) => {
-    const {id, label, reverse = false, ...pass} = props;
+    const { id, label, reverse = false, ...pass } = props;
     if (reverse) {
       return (
         <div className={classNames("field", `field-${name}`)}>
@@ -24,12 +23,15 @@ function Labeled(name, Component) {
 export function Group(Header) {
   if (typeof Header === "string") {
     const s = Header;
-    Header = ({className}) => <h2 className={className}>{s}</h2>;
+    Header = ({ className }) => <h2 className={className}>{s}</h2>;
   }
   return (props) => {
-    const {children, columns = 1, className, ...pass} = props;
+    const { children, columns = 1, className, ...pass } = props;
     return (
-      <div {...pass} className={classNames("group", `col-${columns}`, className)}>
+      <div
+        {...pass}
+        className={classNames("group", `col-${columns}`, className)}
+      >
         <Header className="group-header" />
         {children}
       </div>
@@ -38,22 +40,36 @@ export function Group(Header) {
 }
 
 export const Input = Labeled("input", (props) => {
-  const {value = "", onChange = () => {}, type = "text", ...pass} = props;
+  const { value = "", onChange = () => {}, type = "text", ...pass } = props;
   return (
-    <input {...pass} value={value} onChange={(e) => onChange(e.target.value)} type={type} />
+    <input
+      {...pass}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      type={type}
+    />
   );
 });
 export const Select = Labeled("select", (props) => {
-  const {value = "", onChange = () => {}, options = {}, ...pass} = props;
+  const { value = "", onChange = () => {}, options = {}, ...pass } = props;
   return (
     <select {...pass} value={value} onChange={(e) => onChange(e.target.value)}>
-      {Object.keys(options).map((k, i) => <option value={k} key={i}>{options[k]}</option>)}
+      {Object.keys(options).map((k, i) => (
+        <option value={k} key={i}>
+          {options[k]}
+        </option>
+      ))}
     </select>
   );
 });
 export const TextArea = Labeled("textarea", (props) => {
-  const {value = "", onChange = () => {}, rows = 3, ...pass} = props;
+  const { value = "", onChange = () => {}, rows = 3, ...pass } = props;
   return (
-    <textarea {...pass} value={value} rows={rows} onChange={(e) => onChange(e.target.value)} />
+    <textarea
+      {...pass}
+      value={value}
+      rows={rows}
+      onChange={(e) => onChange(e.target.value)}
+    />
   );
 });

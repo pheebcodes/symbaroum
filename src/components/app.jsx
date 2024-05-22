@@ -1,11 +1,10 @@
-import Preact from "preact";
-import {connect} from "react-redux";
-import {Route, Redirect, Switch} from "react-router-dom";
-import {CharacterEditor} from "./character_editor";
-import {CharacterSelector} from "./character_selector.js";
-import {ActionModal} from "./action_modal.js";
-import {MessageModal} from "./message_modal.js";
-import {messages} from "../data";
+import { connect } from "react-redux";
+import { Route, Redirect, Switch } from "react-router-dom";
+import { CharacterEditor } from "./character_editor/index.jsx";
+import { CharacterSelector } from "./character_selector.jsx";
+import { ActionModal } from "./action_modal.jsx";
+import { MessageModal } from "./message_modal.jsx";
+import { messages } from "../data/index.js";
 
 function getModal(unreadMessages, modal) {
   if (unreadMessages) {
@@ -19,18 +18,18 @@ function mapState(state) {
   return {
     modal: state.has("modal"),
     unreadMessages: state.get("readMessages", 0) < messages.length,
-    printing: state.get("printing", false)
+    printing: state.get("printing", false),
   };
 }
 
-export function AppView({modal, unreadMessages}) {
+export function AppView({ modal, unreadMessages }) {
   return (
     <div className="app-container">
       <div className="app">
         {getModal(unreadMessages, modal)}
         <Switch>
-          <Route exact path="/" component={CharacterSelector} />
           <Route path="/character/:id" component={CharacterEditor} />
+          <Route exact path="/" component={CharacterSelector} />
           <Redirect to="/" />
         </Switch>
       </div>

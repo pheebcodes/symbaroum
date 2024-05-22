@@ -1,23 +1,25 @@
-import Preact from "preact";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
-import {Map, List} from "immutable";
-import {updateCharacters} from "../store/actions.js";
-import {BlockList} from "./block_list.js";
-import {races} from "../data";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { Map, List } from "immutable";
+import { updateCharacters } from "../store/actions.js";
+import { BlockList } from "./block_list.jsx";
+import { races } from "../data/index.js";
 
-function Name({name}) {
+function Name({ name }) {
   if (name) {
     return <h2>{name}</h2>;
   }
   return <h2 className="no-name">No Name</h2>;
 }
 
-function Character({className, value, onClick}) {
+function Character({ className, value, onClick }) {
   return (
     <div className={className} onClick={onClick}>
       <Name name={value.get("name")} />
-      <p>{races[value.get("race")]} {value.get("occupation")} &mdash; {value.get("xp")} XP</p>
+      <p>
+        {races[value.get("race")]} {value.get("occupation")} &mdash;{" "}
+        {value.get("xp")} XP
+      </p>
     </div>
   );
 }
@@ -54,28 +56,37 @@ const defaultCharacter = Map({
   assets: "",
   inventory: List(),
   group: Map({ members: List(), name: "", goal: "" }),
-  artifacts: List()
+  artifacts: List(),
 });
 
 const CharacterList = BlockList(Character, {
-  addLabel: "New Character"
+  addLabel: "New Character",
 });
 
 function mapState(state) {
   return {
-    characters: state.get("characters")
+    characters: state.get("characters"),
   };
 }
 
-export function CharacterSelectorView({characters, updateCharacters, history}) {
+export function CharacterSelectorView({
+  characters,
+  updateCharacters,
+  history,
+}) {
   return (
-    <CharacterList className="character-list" list={characters}
+    <CharacterList
+      className="character-list"
+      list={characters}
       onClickItem={(i) => history.push(`/character/${i}`)}
       onClickNew={() => {
         updateCharacters([], characters.push(defaultCharacter));
         history.push(`/character/${characters.size}`);
-      }} />
+      }}
+    />
   );
 }
 
-export const CharacterSelector = withRouter(connect(mapState, {updateCharacters})(CharacterSelectorView));
+export const CharacterSelector = withRouter(
+  connect(mapState, { updateCharacters })(CharacterSelectorView)
+);

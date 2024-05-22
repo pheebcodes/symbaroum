@@ -1,8 +1,7 @@
-import Preact from "preact";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {ScrollToTop} from "./scroll_to_top.js";
-import {App} from "./app.js";
-import {PrintSheet} from "./print_sheet.js";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { ScrollToTop } from "./scroll_to_top.jsx";
+import { App } from "./app.jsx";
+import { PrintSheet } from "./print_sheet.jsx";
 
 export function Router() {
   return (
